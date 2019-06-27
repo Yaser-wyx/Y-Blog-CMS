@@ -6,7 +6,7 @@ export const articleSchema = new schema(
 	{
 		title: String,
 		words: Number,
-		type: String,
+		classify: String,
 		views: Number,
 		text: String,
 		isPublish: Boolean,

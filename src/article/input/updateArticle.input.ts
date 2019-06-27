@@ -7,7 +7,7 @@ export class UpdateArticleInput {
 	@Field({ nullable: true })
 	readonly title: String;
 	@Field({ nullable: true })
-	readonly type: String;
+	readonly classify: String;
 	@Field({ nullable: true })
 	readonly text: String;
 	@Field()

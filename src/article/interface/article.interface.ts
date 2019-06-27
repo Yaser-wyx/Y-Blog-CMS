@@ -2,41 +2,27 @@ import { Document } from "mongoose";
 import { calculateWords } from "../../utils";
 import { CreateArticleInput } from "../input/createArticle.input";
 
-
-export interface ArticleInterface extends Document {
-	title: String,
-	_id: String,
-	isPublish: boolean,
-	words: Number,
-	type: String,
-	views: Number,
-	text: String,
-	createdAt: String,
-	summary:String;
-	updatedAt: String
-}
-
-export class Article implements ArticleInterface {
+export class Article extends Document {
 	createdAt: String;
 	text: String;
 	title: String;
-	type: String;
+	classify: String;
 	updatedAt: String;
-	summary:String;
+	summary: String;
 	views: Number;
 	words: Number;
 	isPublish: boolean;
-	_id: String;
 
 
 	constructor(article: CreateArticleInput) {
+		super();
 		this.isPublish = article.isPublish;
 		this.text = article.text;
 		this.words = calculateWords(article.text);
 		this.title = article.title;
-		this.type = article.type;
+		this.classify = article.classify;
 		this.views = 0;
-		this.summary = article.summary
+		this.summary = article.summary;
 	}
 
 

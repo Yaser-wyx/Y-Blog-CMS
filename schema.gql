@@ -3,11 +3,17 @@
 # !!!   DO NOT MODIFY THIS FILE BY YOURSELF   !!!
 # -----------------------------------------------
 
+type ArticleClassifyDto {
+  id: ID!
+  typeName: String!
+  background: String!
+}
+
 type ArticleDto {
   id: ID!
   title: String!
   words: Int!
-  type: String!
+  classify: String!
   views: Int!
   text: String!
   createdAt: String!
@@ -20,17 +26,28 @@ type ArticleListDto {
   page: PageDto
 }
 
+type ArticleNearbyDto {
+  pre: ArticleDto
+  next: ArticleDto
+}
+
+input CreateArticleClassifyInput {
+  typeName: String!
+  background: String!
+}
+
 input CreateArticleInput {
   title: String!
-  type: String
+  classify: String
   text: String!
   isPublish: Boolean!
   summary: String!
 }
 
 type Mutation {
-  createArticle(article: CreateArticleInput!): ArticleDto!
+  createArticle(article: [CreateArticleInput!]!): [ArticleDto!]!
   updateArticle(article: UpdateArticleInput!): ArticleDto!
+  createArticleClassifies(articleClassifies: [CreateArticleClassifyInput!]!): [ArticleClassifyDto!]!
 }
 
 type PageDto {
@@ -45,14 +62,16 @@ input PagesInput {
 }
 
 type Query {
-  articles(page: PagesInput!): ArticleListDto
+  articles(classifyIndex: Int = -1, page: PagesInput!): ArticleListDto
+  article(articleId: String!): ArticleDto!
+  articleNearby(articleId: String!): ArticleNearbyDto!
   deleteArticleByIDs(articleIds: [String!]!): Boolean
 }
 
 input UpdateArticleInput {
   id: ID!
   title: String
-  type: String
+  classify: String
   text: String
   isPublish: Boolean!
   summary: String

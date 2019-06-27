@@ -5,7 +5,7 @@ export class CreateArticleInput {
 	@Field()
 	readonly title: String;
 	@Field({ nullable: true })
-	readonly type: String;
+	readonly classify: String;
 	@Field()
 	readonly text: String;
 	@Field()

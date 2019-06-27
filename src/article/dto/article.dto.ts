@@ -9,7 +9,7 @@ export class ArticleDto {
 	@Field(() => Int)
 	words: Number;
 	@Field()
-	type: String;
+	classify: String;
 	@Field(() => Int)
 	views: Number;
 	@Field()
