@@ -1,12 +1,17 @@
+import { ApiModelProperty } from "@nestjs/swagger";
 import { User } from "../interface/user.interface";
 
 let _ = require("lodash");
 
 export class UserDto {
-	userName: String;
-	avatar: String;
-	email: String;
-	userId: String;
+	@ApiModelProperty({ description: "用户名", required: false })
+	userName?: String;
+	@ApiModelProperty({ description: "用户头像", required: false })
+	avatar?: String;
+	@ApiModelProperty({ description: "用户邮箱", required: false })
+	email?: String;
+	@ApiModelProperty({ description: "用户ID", required: false })
+	userId?: String;
 
 	constructor(user: User) {
 		if (!!user) {

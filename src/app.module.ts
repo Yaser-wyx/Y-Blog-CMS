@@ -15,7 +15,7 @@ import { ServerModule } from "./server/server.module";
 																				}),
 						GraphQLModule.forRoot({
 																		autoSchemaFile: "schema.gql",
-																		path: "/api",
+																		path: "/Graphql/api",
 																	})],
 				})
 export class ApplicationModule {}
