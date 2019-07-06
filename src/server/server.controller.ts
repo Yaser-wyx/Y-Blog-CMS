@@ -62,13 +62,15 @@ export class ServerController {
 																	},
 																}),
 	}))
-	uploadFile(@UploadedFile() file) {
+	async uploadFile(@UploadedFile() file) {
 		console.log(file);
 		return {
 			url: file.filename,
 		};
 	}
 
-	//todo 添加登录接口
-	//todo 添加jwt协议
+	@Post("login")
+	async login(@Body()user: UserInput) {
+		return this.serverService.userLogin(user);
+	}
 }
