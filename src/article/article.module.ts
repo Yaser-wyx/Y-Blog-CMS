@@ -8,10 +8,11 @@ import { articleSchema } from "./schema/article.schema";
 import { articleClassifySchema } from "./schema/classify.schema";
 
 @Module({
-					imports: [MongooseModule.forFeature([{ name: "Classify", schema: articleClassifySchema }, {
-						name: "Article",
-						schema: articleSchema,
-					}])],
+					imports: [
+						MongooseModule.forFeature([{ name: "Classify", schema: articleClassifySchema }, {
+							name: "Article",
+							schema: articleSchema,
+						}])],
 					providers: [ArticleClassifyResolver, ArticleResolver, ArticleService, ArticleClassifyService],
 				})
 export class ArticleModule {
